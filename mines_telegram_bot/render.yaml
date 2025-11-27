@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: mines-web
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: bash -lc "python bot_worker.py & uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: BOT_TOKEN
+      - key: DATABASE_URL
+      - key: WEBHOOK_HOST
+      - key: WEBHOOK_PATH
+      - key: CRYPTOPAY_SECRET
+      - key: RANDOM_SECRET_KEY
+      - key: ADMIN_TELEGRAM_ID
+    dockerfilePath: ""
